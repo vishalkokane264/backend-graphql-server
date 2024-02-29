@@ -1,56 +1,4 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
-
-const userTypeDefs = `#graphql
-type Geo {
-    lat: String
-    lng: String
-}
-type Company{
-    name: String
-    catchPhrase: String
-    bs: String
-}
-type Address {
-    street: String
-    suite: String
-    city: String
-    zipcode: String
-    geo: Geo
-}
-  type User {
-    id: String
-    name: String
-    username:String
-    email:String
-    address:Address
-    phone: String
-    website:String
-    company:Company
-  }
-
-  type Query {
-    users: [User]
-  }
-`;
-
-const userResolvers = {
-  Query: {
-    users: () => userData,
-  },
-};
-
-const server = new ApolloServer({
-  typeDefs: userTypeDefs,
-  resolvers: userResolvers,
-});
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
-});
-
-console.log(`🚀  Server ready at: ${url}`);
-
-const userData = [
+export const userData = [
   {
     id: 1,
     name: "Leanne Graham",
@@ -282,3 +230,5 @@ const userData = [
     },
   },
 ];
+
+module.exports = { userData };

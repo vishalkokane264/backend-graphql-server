@@ -17,4 +17,4 @@ export const typeDefs = `#graphql
     books: [Book]
   }
 `;
-export default typeDefs;
+module.exports = { typeDefs };
